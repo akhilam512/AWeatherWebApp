@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const request = require('request') 
 
-let apiKey = "your_Open_Weather_Map_api_key"
+let apiKey = "your_Open_Weather_Map_api_key"     // **** ADD YOUR OPEN WEATHER MAP API KEY BEFORE EXECUTING
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true}))
