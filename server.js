@@ -5,12 +5,12 @@ const request = require('request')
 
 let apiKey = "37aa1385f3e062fa0c9917966cb0c5b4"
 app.set('view engine', 'ejs')
-app.use(express.static('public'));
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true}))
 
 app.get('/', function (req, res) { 
 
-    res.render('weatherhome'), {weather: null, error: null}
+    res.render('weatherhome', {weather: null, error: null})
 
 
 })
@@ -29,7 +29,8 @@ app.post('/', function(req, res) {
             if(weather.main == undefined){
               res.render('weatherhome', {weather: null, error: 'Error, please try again'});
             } else {
-              let weatherText = `It's ${weather.main.temp} degrees in ${weather.name}!`;
+              inCelsius = (weather.main.temp-32)*.5556
+              let weatherText = `It's ${inCelsius.toPrecision(3)} degrees in ${weather.name}!`;
               res.render('weatherhome', {weather: weatherText, error: null});
             }
           }
